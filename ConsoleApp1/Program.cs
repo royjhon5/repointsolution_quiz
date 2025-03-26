@@ -8,12 +8,15 @@ class RePointSolutionsQuiz {
         Console.WriteLine("The extracted number is: " + number);
     }
     static int ParseTheNumberFromString(string input) {
-        StringBuilder numberBuilder = new StringBuilder();
-         foreach (char valuesainput in input){
-            if (char.IsDigit(valuesainput)){
-                numberBuilder.Append(valuesainput);
-            }
+        int result = 0;
+        bool getTheDigitOnly = false;
+        foreach (char valuesinput in input) {
+           if (valuesinput >= '0' && valuesinput <= '9') {
+            getTheDigitOnly = true;
+            result = result * 10 + (valuesinput - '0');
+           }
         }
-        return numberBuilder.Length > 0 ? int.Parse(numberBuilder.ToString()) : 0;
+         return getTheDigitOnly ? result : 0;
+
     }
 }
